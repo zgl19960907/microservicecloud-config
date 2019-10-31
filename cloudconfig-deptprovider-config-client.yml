@@ -1,0 +1,35 @@
+server:
+  port: 8001
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/clouddb01
+  #应用名称
+  application:
+    name: microservicecloud-dept
+
+#通用mapper的配置  持久化
+mapper:
+  mappers: com.offcn.springcloud.mapper
+  identity: mysql
+  not-empty: false
+#日志的配置
+logging:
+  level:
+    com.offcn.springcloud.mapper: debug
+#将服务注册给注册中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+  instance:
+    instance-id: microservicecloud-dept8001
+    prefer-ip-address: true
+
+info:
+  app.name: offcn-microservicecloud
+  company.name: www.offcn.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
